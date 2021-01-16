@@ -1,0 +1,219 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>toolbox_stereo_eye_in_hand</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-09-24"><meta name="DC.source" content="toolbox_stereo_eye_in_hand.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">&#23558;&#25152;&#26377;&#20301;&#23039;&#20445;&#23384;&#21040;&#19968;&#20010;&#25968;&#32452;&#20013;</a></li><li><a href="#4">&#23558;&#25152;&#26377;&#20301;&#23039;&#20445;&#23384;&#21040;&#19968;&#20010;&#25968;&#32452;&#20013;</a></li><li><a href="#5">&#30452;&#25509;&#21462;&#26631;&#23450;&#32467;&#26524;&#20013;&#30340;&#25968;&#25454;&#20316;&#20026;&#22806;&#21442;</a></li><li><a href="#6">Compute camera pose -&gt;&#23558;&#30456;&#26426;&#20301;&#32622;&#26174;&#31034;&#22312;&#26631;&#23450;&#26495;&#22352;&#26631;&#31995;&#20013;</a></li><li><a href="#7">&#20445;&#23384;&#30456;&#26426;&#20301;&#23039;</a></li><li><a href="#9">&#25163;&#30524;&#26631;&#23450;</a></li><li><a href="#10">&#26174;&#31034;&#30456;&#26426;&#22312;&#26426;&#22120;&#20154;&#22352;&#26631;&#20301;&#32622;</a></li></ul></div><pre class="codeinput"><span class="comment">%toolbox&#21452;&#30446;&#26631;&#23450; &#21152;&#36733;Calib_Results_stereo.mat</span>
+</pre><p>Create a set of calibration images. close all; clear; clc;o</p><pre class="codeinput"><span class="comment">%load('D:\rongjc&#30340;&#25991;&#20214;&#22841;\&#21452;&#30446;&#26631;&#23450;\eyeinhand\eyeinhand\&#25163;&#30524;&#26631;&#23450;5.7\Calib_Results_stereo.mat')</span>
+path =<span class="string">'&#25163;&#30524;&#26631;&#23450;5.7'</span>;
+num_of_images = 15;
+</pre><h2 id="3">&#23558;&#25152;&#26377;&#20301;&#23039;&#20445;&#23384;&#21040;&#19968;&#20010;&#25968;&#32452;&#20013;</h2><p>&#35835;&#20837;&#26426;&#26800;&#25163;&#30340;&#20301;&#32622;&#25968;&#25454;</p><pre class="codeinput">bHg = zeros(4, 4, num_of_images); <span class="comment">% &#21021;&#22987;&#21270;,&#20027;&#35201;&#26159;&#22823;&#23567;</span>
+jiaodu = zeros(3, num_of_images);
+positions = importdata([path <span class="string">'/&#22352;&#26631;2.txt'</span>]);
+<span class="keyword">for</span> i = 1 : num_of_images
+    <span class="comment">%&#23558;&#26426;&#22120;&#20154;6&#22352;&#26631;&#36716;&#25442;&#20026;4X4&#22352;&#26631;&#31995;&#36716;&#25442;&#30697;&#38453;</span>
+    pos = positions( i, 1:end);
+    location = pos(1:3)* 1000;
+    <span class="comment">% 1</span>
+    q = pos(4:7);
+    <span class="comment">%orientation = quat2rotm(q);</span>
+    orientation=[ 2*q(1).^2-1+2*q(2)^2    2*(q(2)*q(3)-q(1)*q(4)) 2*(q(2)*q(4)+q(1)*q(3));
+        2*(q(2)*q(3)+q(1)*q(4)) 2*q(1)^2-1+2*q(3)^2     2*(q(3)*q(4)-q(1)*q(2));
+        2*(q(2)*q(4)-q(1)*q(3)) 2*(q(3)*q(4)+q(1)*q(2)) 2*q(1)^2-1+2*q(4)^2];
+    <span class="comment">% 1</span>
+    jiaodu(1:3,i)=pos(4:6)*pi/180.0;
+    <span class="comment">%orientation = eul2rotm(jiaodu(1:3,i)','XYZ');</span>
+    figure(3);
+    plotCamera(<span class="string">'Location'</span>,location,<span class="string">'Orientation'</span>,orientation',<span class="string">'Size'</span>,20);
+    hold <span class="string">on</span>
+    pcshow([0,0,0], [1.0,0,0], <span class="string">'VerticalAxisDir'</span>,<span class="string">'down'</span>,<span class="string">'MarkerSize'</span>,40);
+    bHg(1:3, 1:3, i) = orientation;
+    bHg(1:3, 4,   i) = location';
+    bHg(4, :, i) = [0 0 0 1];
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_01.png" alt=""> <h2 id="4">&#23558;&#25152;&#26377;&#20301;&#23039;&#20445;&#23384;&#21040;&#19968;&#20010;&#25968;&#32452;&#20013;</h2><pre class="codeinput">cHw = zeros(4, 4, num_of_images);
+<span class="keyword">for</span> i = 1 : num_of_images
+</pre><h2 id="5">&#30452;&#25509;&#21462;&#26631;&#23450;&#32467;&#26524;&#20013;&#30340;&#25968;&#25454;&#20316;&#20026;&#22806;&#21442;</h2><pre class="codeinput">    rotation_vector = rotationVectorToMatrix(cameraParams.RotationVectors(i,:));
+    translation_vector =  cameraParams.TranslationVectors(i,:);
+</pre><h2 id="6">Compute camera pose -&gt;&#23558;&#30456;&#26426;&#20301;&#32622;&#26174;&#31034;&#22312;&#26631;&#23450;&#26495;&#22352;&#26631;&#31995;&#20013;</h2><pre class="codeinput">    [orientation, location] = extrinsicsToCameraPose(rotation_vector, <span class="keyword">...</span>
+      translation_vector);
+figure(1);
+    plotCamera(<span class="string">'Location'</span>,location,<span class="string">'Orientation'</span>,orientation,<span class="string">'Size'</span>,20); hold <span class="string">on</span>
+    pcshow([0,0,0], [1.0,0,0], <span class="string">'VerticalAxisDir'</span>,<span class="string">'down'</span>,<span class="string">'MarkerSize'</span>,40); hold <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_02.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_03.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_04.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_05.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_06.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_07.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_08.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_09.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_10.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_11.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_12.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_13.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_14.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_15.png" alt=""> <img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_16.png" alt=""> <h2 id="7">&#20445;&#23384;&#30456;&#26426;&#20301;&#23039;</h2><pre class="codeinput">    cHw(1:3, 1:3, i) = rotation_vector';
+    cHw(1:3, 4, i) = translation_vector';
+    cHw(4, 1:4, i) = [0 0 0 1];
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><h2 id="9">&#25163;&#30524;&#26631;&#23450;</h2><pre class="codeinput">gHc = handEye(bHg, cHw);
+<span class="comment">% bHg&#20026;&#25293;&#25668;&#26102;&#35760;&#24405;&#30340;&#22352;&#26631;&#65292;&#20026;&#26411;&#31471;&#30456;&#23545;&#26426;&#22120;&#20154;&#22522;&#24231;&#26631;&#30340;&#36716;&#25442;&#30697;&#38453;</span>
+<span class="comment">% cHw&#20026;&#21452;&#30446;&#26631;&#23450;&#21518;&#65292;&#30456;&#26426;&#30456;&#23545;&#26631;&#23450;&#26495;&#30340;&#20301;&#32622;&#36716;&#25442;&#30697;&#38453;&#65292;&#36733;&#20837;&#8216;Calib_Results_stereo.mat&#8217;&#21363;&#21487;</span>
+<span class="comment">% &#20351;&#29992;handEye&#20989;&#25968;&#65292;&#36827;&#34892;&#25163;&#30524;&#26631;&#23450;</span>
+<span class="comment">% gHc = handEye(bHg, cHw);</span>
+<span class="comment">% &#33719;&#21462;gHc&#30456;&#26426;&#30456;&#23545;&#20110;&#26426;&#22120;&#20154;&#26411;&#31471;&#30340;&#20301;&#32622;&#36716;&#25442;&#30697;&#38453;</span>
+disp(gHc);
+rot_vect = -rotationMatrixToVector(gHc(1:3, 1:3));
+theta = norm(rot_vect);
+r = rot_vect / theta;
+disp(<span class="string">'&#26059;&#36716;&#21521;&#37327;:'</span>);
+disp(r);
+disp([<span class="string">'&#26059;&#36716;&#35282;'</span> num2str(theta * 180 / pi)]);
+</pre><pre class="codeoutput">   -0.9993    0.0339    0.0168   35.1517
+   -0.0343   -0.9992   -0.0229  115.2269
+    0.0161   -0.0235    0.9996  113.5544
+         0         0         0    1.0000
+&#26059;&#36716;&#21521;&#37327;:
+   -0.0082    0.0116   -0.9999
+&#26059;&#36716;&#35282;178.047
+</pre><h2 id="10">&#26174;&#31034;&#30456;&#26426;&#22312;&#26426;&#22120;&#20154;&#22352;&#26631;&#20301;&#32622;</h2><pre class="codeinput">bHc= bHg(:, :, 1)*gHc;
+figure(4);
+plotCamera(<span class="string">'Location'</span>, bHg(1:3,4,1)',<span class="string">'Orientation'</span>, bHg(1:3, 1:3, 1)',<span class="string">'Size'</span>,20);
+hold <span class="string">on</span>
+plotCamera(<span class="string">'Location'</span>,bHc(1:3, 4),<span class="string">'Orientation'</span>,  bHc(1:3, 1:3)',<span class="string">'Size'</span>,20);
+hold <span class="string">on</span>
+pcshow([0,0,0], [1.0,0,0], <span class="string">'VerticalAxisDir'</span>,<span class="string">'down'</span>,<span class="string">'MarkerSize'</span>,40);
+</pre><img vspace="5" hspace="5" src="toolbox_stereo_eye_in_hand_17.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%toolbox双目标定 加载Calib_Results_stereo.mat
+
+%%
+% Create a set of calibration images.
+% close all;
+% clear;
+% clc;o
+%load('D:\rongjc的文件夹\双目标定\eyeinhand\eyeinhand\手眼标定5.7\Calib_Results_stereo.mat')
+path ='手眼标定5.7';
+num_of_images = 15;
+%% 将所有位姿保存到一个数组中
+% 读入机械手的位置数据
+bHg = zeros(4, 4, num_of_images); % 初始化,主要是大小
+jiaodu = zeros(3, num_of_images);
+positions = importdata([path '/坐标2.txt']);
+for i = 1 : num_of_images
+    %将机器人6坐标转换为4X4坐标系转换矩阵
+    pos = positions( i, 1:end);
+    location = pos(1:3)* 1000;
+    % 1
+    q = pos(4:7);
+    %orientation = quat2rotm(q);
+    orientation=[ 2*q(1).^2-1+2*q(2)^2    2*(q(2)*q(3)-q(1)*q(4)) 2*(q(2)*q(4)+q(1)*q(3));
+        2*(q(2)*q(3)+q(1)*q(4)) 2*q(1)^2-1+2*q(3)^2     2*(q(3)*q(4)-q(1)*q(2));
+        2*(q(2)*q(4)-q(1)*q(3)) 2*(q(3)*q(4)+q(1)*q(2)) 2*q(1)^2-1+2*q(4)^2];
+    % 1
+    jiaodu(1:3,i)=pos(4:6)*pi/180.0;
+    %orientation = eul2rotm(jiaodu(1:3,i)','XYZ');
+    figure(3);
+    plotCamera('Location',location,'Orientation',orientation','Size',20);
+    hold on
+    pcshow([0,0,0], [1.0,0,0], 'VerticalAxisDir','down','MarkerSize',40);
+    bHg(1:3, 1:3, i) = orientation;
+    bHg(1:3, 4,   i) = location';
+    bHg(4, :, i) = [0 0 0 1];
+end
+%% 将所有位姿保存到一个数组中
+cHw = zeros(4, 4, num_of_images);
+for i = 1 : num_of_images
+  %% 直接取标定结果中的数据作为外参
+    rotation_vector = rotationVectorToMatrix(cameraParams.RotationVectors(i,:));
+    translation_vector =  cameraParams.TranslationVectors(i,:);
+  %% Compute camera pose ->将相机位置显示在标定板坐标系中
+    [orientation, location] = extrinsicsToCameraPose(rotation_vector, ...
+      translation_vector);
+figure(1);
+    plotCamera('Location',location,'Orientation',orientation,'Size',20); hold on
+    pcshow([0,0,0], [1.0,0,0], 'VerticalAxisDir','down','MarkerSize',40); hold on
+  %% 保存相机位姿
+    cHw(1:3, 1:3, i) = rotation_vector';
+    cHw(1:3, 4, i) = translation_vector';
+    cHw(4, 1:4, i) = [0 0 0 1];
+end
+
+
+  %% 手眼标定
+gHc = handEye(bHg, cHw);
+% bHg为拍摄时记录的坐标，为末端相对机器人基座标的转换矩阵
+% cHw为双目标定后，相机相对标定板的位置转换矩阵，载入‘Calib_Results_stereo.mat’即可
+% 使用handEye函数，进行手眼标定
+% gHc = handEye(bHg, cHw);
+% 获取gHc相机相对于机器人末端的位置转换矩阵
+disp(gHc);
+rot_vect = -rotationMatrixToVector(gHc(1:3, 1:3));
+theta = norm(rot_vect);
+r = rot_vect / theta;
+disp('旋转向量:');
+disp(r);
+disp(['旋转角' num2str(theta * 180 / pi)]);
+  %% 显示相机在机器人坐标位置
+bHc= bHg(:, :, 1)*gHc;
+figure(4);
+plotCamera('Location', bHg(1:3,4,1)','Orientation', bHg(1:3, 1:3, 1)','Size',20);
+hold on
+plotCamera('Location',bHc(1:3, 4),'Orientation',  bHc(1:3, 1:3)','Size',20);
+hold on
+pcshow([0,0,0], [1.0,0,0], 'VerticalAxisDir','down','MarkerSize',40);
+
+
+##### SOURCE END #####
+--></body></html>
